@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Clan</title>
+    <style>
+        /* Styles généraux */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: "Georgia", serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Centrer tout le contenu */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: "Copperplate", sans-serif;
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 18px;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        /* Styles spécifiques */
+        .treasure-map {
+            position: relative;
+            width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        .treasure-map img {
+            width: 100%;
+            height: auto;
+        }
+
+        .treasure-map .text-container {
+            display: inline-block; /* Pour centrer horizontalement */
+            text-align: center; /* Centrer le texte */
+            opacity: 0;
+            animation: fade-in 5s forwards;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            20% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Style pour le formulaire */
+        .password-form {
+            margin-top: 30px;
+        }
+
+        .password-input {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .password-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Le Clan</h1>
+
+    <div class="container">
+        <h1>Indice 1</h1>
+        <div class="treasure-map">
+            <img src="_Images\Indices\PlanPereLachaiseComplet.png" alt="Carte au trésor">
+            <div class="text-container">
+                <p>
+                    Si bonne maman doit se sentir à sa place, <br>
+                    C’est qu’elle communiquait déjà de son vivant<br>
+                    Avec celles et ceux qui sous vos pieds s'effacent,<br>
+                    En plus d’écouter elle parle maintenant,<br>
+                    Dans son hymne à la mort, bien connu en son temps,<br>
+                    Le spiritisme est une loi, d’après elle<br>
+                    Elle prétendait même qu’elle était naturelle<br>
+                    Ne perdez pas le vôtre, trouvez-la maintenant
+                </p>
+            </div>
+        </div>
+        <form class="password-form" onsubmit="event.preventDefault(); checkPassword();">
+            <label for="password-input">Entrez le mot de passe :</label>
+            <input type="password" id="password-input" class="password-input" required>
+            <button type="submit" class="password-button">Valider</button>
+        </form>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("password-input").value.toLowerCase();
+            if (password === "edith piaf") {
+                document.querySelector(".container").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
