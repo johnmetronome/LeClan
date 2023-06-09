@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Poétesse</title>
+    <title>Zeiza</title>
     <style>
         /* Styles généraux */
         body {
@@ -162,24 +162,24 @@
         <img class="logo" src="_Images/Logo/Logo1.png" alt="Logo">
     </div>
     <div class="container">
-        <h1 style="font-family: 'Times New Roman', serif;">La Poétesse</h1>
+        <h1 style="font-family: 'Times New Roman', serif;">Zeiza</h1>
         <p>
-            La fille de David, ainsi que d’Amélia,  <br>
-            Est une poétesse, que le monde admira, <br>
-            En 1904, à Paris elle s’installa,<br>
-            En plus d’écouter elle parle maintenant,<br>
-            Elle venait des US mais elle resta la<br>
-            L’autobiographie d’Alice Toklas resta, <br>
-            Son portrait? Picasso, Vallotton, Picabia,<br>
-            Et d’autres peintres encore, incluant Rovira,<br>
-            Prirent le temps de peindre, pour cette femme la. 
+            Figure du féminisme en France,<br>
+            rare avocate dans ce monde triste et rance,<br>
+            a défendre celles qui on vécu,<br>
+            et leur donner une once d'espérance.<br><br>
+            Grâce à elle des lois ont été adoptées,<br>
+            c’est la moindre des choses que de l'honorer<br>
+            vous sentirez sa force, son esprit, en passant à coté,<br>
+            vous en savez assez, allez la retrouver.
         </p>
     </div>
     <div class="button-container">
         <a class="return-button" href="Accueil.html">Retour</a>
     </div>
     <div class="dialogue-input">
-        <label for="text-input">Qui suis-je ?</label>
+        <label for="text-input">Quel est le nom de cette avocate célèbre ?<br>
+        Indice: n'oublie pas l'accent dans son prénom.</label>
         <form onsubmit="validateText(event)">
             <input type="text" id="text-input" placeholder="Entrez le texte...">
             <input type="submit" value="Valider" class="button">
@@ -191,11 +191,15 @@
             event.preventDefault();
 
             const textInput = document.getElementById('text-input').value.toLowerCase();
-            const validTexts = ['gertrud', 'stein', 'gertrud stein'];
 
-            if (validTexts.includes(textInput)) {
-                alert("Bonne réponse ! Va au repaire H");
-                window.location.href = "Etape4.html";
+            if (
+                textInput === 'gisèle' ||
+                textInput === 'gisèle halimi' ||
+                textInput === 'maitre halimi' ||
+                textInput === 'halimi'
+            ) {
+                alert("Bonne réponse ! Voici la suite.");
+                window.location.href = "Etape10.html";
             } else {
                 alert("Raté, essaye encore !");
                 location.reload();

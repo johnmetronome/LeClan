@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Poétesse</title>
+    <title>L'histoire t'attend</title>
     <style>
         /* Styles généraux */
         body {
@@ -127,15 +127,6 @@
             font-weight: bold;
         }
 
-        .dialogue-input input[type="text"] {
-            display: block;
-            margin: 0 auto;
-            padding: 5px 10px;
-            width: 300px;
-            font-size: 16px;
-            border: 1px solid #fff;
-        }
-
         .dialogue-input input[type="submit"] {
             display: inline-block;
             margin-top: 10px;
@@ -148,6 +139,9 @@
             background-color: #fff;
             color: #FFB6C1;
             transition: background-color 0.3s, color 0.3s;
+            border: none;
+            outline: none;
+            cursor: pointer;
         }
 
         .dialogue-input input[type="submit"]:hover {
@@ -162,44 +156,28 @@
         <img class="logo" src="_Images/Logo/Logo1.png" alt="Logo">
     </div>
     <div class="container">
-        <h1 style="font-family: 'Times New Roman', serif;">La Poétesse</h1>
+        <h1 style="font-family: 'Times New Roman', serif;">Rendez-vous avec L'histoire</h1>
         <p>
-            La fille de David, ainsi que d’Amélia,  <br>
-            Est une poétesse, que le monde admira, <br>
-            En 1904, à Paris elle s’installa,<br>
-            En plus d’écouter elle parle maintenant,<br>
-            Elle venait des US mais elle resta la<br>
-            L’autobiographie d’Alice Toklas resta, <br>
-            Son portrait? Picasso, Vallotton, Picabia,<br>
-            Et d’autres peintres encore, incluant Rovira,<br>
-            Prirent le temps de peindre, pour cette femme la. 
+            La plus grande de toutes t'attends,<br>
+            c’est l’histoire, tu t’en doutais,<br>
+            Elle sait tout sur tout depuis la nuit des temps,<br>
+            va voir celle qui à écrit le blé en herbe il n’y a pas si longtemps
         </p>
     </div>
     <div class="button-container">
         <a class="return-button" href="Accueil.html">Retour</a>
     </div>
     <div class="dialogue-input">
-        <label for="text-input">Qui suis-je ?</label>
-        <form onsubmit="validateText(event)">
-            <input type="text" id="text-input" placeholder="Entrez le texte...">
-            <input type="submit" value="Valider" class="button">
+        <label for="text-input">Es-tu prête à aller en savoir plus sur Colette?</label>
+        <form onsubmit="goToNextStep(event)">
+            <input type="submit" value="Je suis prête" class="button">
         </form>
     </div>
 
     <script>
-        function validateText(event) {
+        function goToNextStep(event) {
             event.preventDefault();
-
-            const textInput = document.getElementById('text-input').value.toLowerCase();
-            const validTexts = ['gertrud', 'stein', 'gertrud stein'];
-
-            if (validTexts.includes(textInput)) {
-                alert("Bonne réponse ! Va au repaire H");
-                window.location.href = "Etape4.html";
-            } else {
-                alert("Raté, essaye encore !");
-                location.reload();
-            }
+            window.location.href = "Etape11.html";
         }
     </script>
 </body>
