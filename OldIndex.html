@@ -74,7 +74,7 @@
         .dialogue {
             display: none;
             position: fixed;
-            top: 70%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: #FCE4EC;
@@ -160,7 +160,7 @@
             <div class="error" id="error"></div>
         </div>
         <div class="message" id="message"></div>
-        <div class="signature" id="signature"><p></p></div>
+        <div class="signature" id="signature"></div>
     </div>
 
     <audio autoplay>
@@ -194,6 +194,8 @@
         const nomInput = document.getElementById('nom');
         const error = document.getElementById('error');
         const message = document.getElementById('message');
+        const signature = document.getElementById('signature');
+        let isSignatureReversed = false;
 
         dialogueBtn.addEventListener('click', () => {
             dialogue.classList.add('active');
@@ -202,19 +204,37 @@
         dialogue.addEventListener('submit', (e) => {
             e.preventDefault();
             const nom = nomInput.value.trim();
-            if (nom.toLowerCase() === 'yaya') {
-                window.location.href = 'yaya.html';
-            } else if (nom === '') {
+            if (nom === '') {
                 error.textContent = 'Veuillez entrer un nom valide.';
             } else {
                 error.textContent = '';
                 dialogue.style.display = 'none';
-                message.textContent = `Vous n'êtes pas le bienvenu, ${nom}!`;
+                message.textContent = `Bienvenue, ${nom}!`;
                 message.style.display = 'block';
-                nomInput.value = ''; // Réinitialise le champ de saisie
-                dialogue.classList.remove('active'); // Permet de réactiver la boîte de dialogue
             }
         });
+
+        function reverseSignature() {
+            const text = "Nous nous retrouverons très bientot. Les Enfants Perdus";
+            const reversedText = text.split('').reverse().join('');
+            signature.textContent = reversedText;
+        }
+
+        function restoreSignature() {
+            signature.textContent = "Nous nous retrouverons très bientot.  Les Enfants Perdus";
+        }
+
+        function toggleSignatureReversal() {
+            if (isSignatureReversed) {
+                restoreSignature();
+            } else {
+                reverseSignature();
+            }
+            isSignatureReversed = !isSignatureReversed;
+        }
+
+        setInterval(toggleSignatureReversal, 3000);
     </script>
 </body>
 </html>
+```
