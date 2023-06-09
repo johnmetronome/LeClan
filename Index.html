@@ -163,9 +163,6 @@
         <div class="signature" id="signature"><p></p></div>
     </div>
 
-    <audio autoplay>
-        <source src="_Medias\Bernardo Sassetti - Sonho dos Outros.mp3" type="audio/mpeg">
-    </audio>
 
     <script>
         const slideshow = document.getElementById('slideshow');
@@ -204,6 +201,8 @@
             const nom = nomInput.value.trim();
             if (nom.toLowerCase() === 'yaya') {
                 window.location.href = 'yaya.html';
+                if (nom.toLowerCase() === 'administrator') {
+                window.location.href = 'Accueil.html';
             } else if (nom === '') {
                 error.textContent = 'Veuillez entrer un nom valide.';
             } else {
