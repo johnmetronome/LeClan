@@ -152,7 +152,7 @@
         </div>
         <button id="dialogue-btn">Identifie-toi</button>
         <div class="dialogue" id="dialogue">
-            <form onsubmit="validateForm(event)">
+            <form>
                 <label for="nom">Nom:</label>
                 <input type="text" id="nom" name="nom">
                 <button type="submit">Valider</button>
@@ -196,10 +196,10 @@
             dialogue.classList.add('active');
         });
 
-        function validateForm(event) {
-            event.preventDefault();
+        dialogue.addEventListener('submit', (e) => {
+            e.preventDefault();
             const nom = nomInput.value.trim();
-            if (nom.toLowerCase() === 'administrateur') {
+            if (nom.toLowerCase() === 'Administrateur') {
                 window.location.href = 'Accueil.html';
             } else if (nom === '') {
                 error.textContent = 'Veuillez entrer un nom valide.';
@@ -210,11 +210,8 @@
                 message.style.display = 'block';
                 nomInput.value = ''; // Réinitialise le champ de saisie
                 dialogue.classList.remove('active'); // Permet de réactiver la boîte de dialogue
-                setTimeout(() => {
-                    window.location.reload();
-                }, 3000); // Recharge la page après 3 secondes
             }
-        }
+        });
     </script>
 </body>
 </html>
