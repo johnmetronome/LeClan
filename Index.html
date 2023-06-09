@@ -3,13 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenue sur le site des enfants perdus</title>
+    <title>Les enfants perdus</title>
     <style>
         /* Styles pour le diaporama */
         body {
             background-color: black;
         }
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px;
+            background-color: #000000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
 
+        #header img {
+            height: 40px;
+            margin-left: 10px;
+        }
         #slideshow {
             position: relative;
             height: 400px;
@@ -120,6 +136,9 @@
     </style>
 </head>
 <body>
+    <header id="header">
+        <img src="_Images\Logo\Logo1.png" alt="Logo">
+    </header>
     <div class="container">
         <h1>LE CLAN</h1>
         <div id="slideshow">

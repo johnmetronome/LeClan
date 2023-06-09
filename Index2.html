@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les Enfants Perdus</title>
+    <title>Les enfants perdus</title>
     <style>
         /* Styles pour le diaporama */
         body {
             background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
         }
-
         #header {
-            text-align: center;
-            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px;
+            background-color: #000000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
         }
 
+        #header img {
+            height: 40px;
+            margin-left: 10px;
+        }
         #slideshow {
             position: relative;
             height: 400px;
@@ -44,10 +51,10 @@
         }
 
         h1 {
-            font-size: 36px;
+            color: white;
         }
 
-        .dialogue-btn {
+        #dialogue-btn {
             display: block;
             margin: 20px auto;
             background-color: #FF80AB;
@@ -59,7 +66,7 @@
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .dialogue-btn:hover {
+        #dialogue-btn:hover {
             background-color: #FF4081;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
@@ -67,7 +74,7 @@
         .dialogue {
             display: none;
             position: fixed;
-            top: 50%;
+            top: 70%;
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: #FCE4EC;
@@ -116,65 +123,49 @@
         }
 
         .message {
+            color: white;
+            text-align: center;
             margin-top: 20px;
         }
 
         .signature {
+            color: white;
+            text-align: center;
             margin-top: 20px;
-            font-style: italic;
-        }
-
-        .actor {
-            display: inline-block;
-            width: 200px;
-            margin: 10px;
-            vertical-align: top;
-        }
-
-        .actor img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
         }
     </style>
 </head>
 <body>
     <header id="header">
-        <h1>Les Enfants Perdus</h1>
-        <div id="slideshow">
-            <img src="_Images/fondecran/0a.png" alt="Image 1">
-            <img src="_Images/fondecran/0b.png" alt="Image 2">
-            <img src="_Images/fondecran/0c.png" alt="Image 3">
-            <img src="_Images/fondecran/0d.png" alt="Image 4">
-            <img src="_Images/fondecran/0e.png" alt="Image 5">
-            <img src="_Images/fondecran/0f.png" alt="Image 6">
-            <img src="_Images/fondecran/0g.png" alt="Image 7">
-        </div>
-        <button class="dialogue-btn">Rentre ton nom</button>
+        <img src="_Images\Logo\Logo1.png" alt="Logo">
     </header>
-
-    <div class="dialogue" id="dialogue">
-        <form id="dialogue-form">
-            <label for="nom">Nom:</label>
-            <input type="text" id="nom" name="nom">
-            <button type="submit">Valider</button>
-        </form>
-        <div class="error" id="error"></div>
-    </div>
-
     <div class="container">
-        <div class="message" id="message"></div>
-        <div class="signature" id="signature"></div>
-
-        
-        <div class="actor">
-            <img src="_Images/acteur3.jpg" alt="Acteur 3">
-            <h3>Acteur 3</h3>
-            <p>Albrius volmaris solentria, vikarius lexivri akendria. Xentis volbrius brendria, krianthus solvikentris zelentria. Volentis draxentro ententis, vandoris plenkentris lexiboris. Almar vikentri drevalis, solvium entrialis polentria. Yentis norvis vristius, vikentis xalbri ententris.</p>
+        <h1>LE CLAN</h1>
+        <div id="slideshow">
+            <img src="_Images\fondecran\0a.png" alt="Image 1">
+            <img src="_Images\fondecran\0b.png" alt="Image 2">
+            <img src="_Images\fondecran\0c.png" alt="Image 3">
+            <img src="_Images\fondecran\0d.png" alt="Image 4">
+            <img src="_Images\fondecran\0e.png" alt="Image 5">
+            <img src="_Images\fondecran\0f.png" alt="Image 6">
+            <img src="_Images\fondecran\0g.png" alt="Image 7">
         </div>
+        <button id="dialogue-btn">Rentre ton nom</button>
+        <div class="dialogue" id="dialogue">
+            <form>
+                <label for="nom">Nom:</label>
+                <input type="text" id="nom" name="nom">
+                <button type="submit">Valider</button>
+            </form>
+            <div class="error" id="error"></div>
+        </div>
+        <div class="message" id="message"></div>
+        <div class="signature" id="signature"><p></p></div>
     </div>
 
-    
+    <audio autoplay>
+        <source src="_Medias\Bernardo Sassetti - Sonho dos Outros.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
         const slideshow = document.getElementById('slideshow');
@@ -198,52 +189,32 @@
         fadeInImage();
         setInterval(showNextImage, 5000);
 
-        const dialogueBtn = document.querySelector('.dialogue-btn');
+        const dialogueBtn = document.getElementById('dialogue-btn');
         const dialogue = document.getElementById('dialogue');
-        const dialogueForm = document.getElementById('dialogue-form');
         const nomInput = document.getElementById('nom');
         const error = document.getElementById('error');
         const message = document.getElementById('message');
-        const signature = document.getElementById('signature');
-        let isSignatureReversed = false;
 
         dialogueBtn.addEventListener('click', () => {
             dialogue.classList.add('active');
         });
 
-        dialogueForm.addEventListener('submit', (e) => {
+        dialogue.addEventListener('submit', (e) => {
             e.preventDefault();
             const nom = nomInput.value.trim();
-            if (nom === '') {
+            if (nom.toLowerCase() === 'yaya') {
+                window.location.href = 'yaya.html';
+            } else if (nom === '') {
                 error.textContent = 'Veuillez entrer un nom valide.';
             } else {
                 error.textContent = '';
                 dialogue.style.display = 'none';
-                message.textContent = `Bienvenue, ${nom}!`;
+                message.textContent = `Vous n'êtes pas le bienvenu, ${nom}!`;
                 message.style.display = 'block';
+                nomInput.value = ''; // Réinitialise le champ de saisie
+                dialogue.classList.remove('active'); // Permet de réactiver la boîte de dialogue
             }
         });
-
-        function reverseSignature() {
-            const text = "Nous nous retrouverons très bientôt. Les Enfants Perdus";
-            const reversedText = text.split('').reverse().join('');
-            signature.textContent = reversedText;
-        }
-
-        function restoreSignature() {
-            signature.textContent = "Nous nous retrouverons très bientôt. Les Enfants Perdus";
-        }
-
-        function toggleSignatureReversal() {
-            if (isSignatureReversed) {
-                restoreSignature();
-            } else {
-                reverseSignature();
-            }
-            isSignatureReversed = !isSignatureReversed;
-        }
-
-        setInterval(toggleSignatureReversal, 3000);
     </script>
 </body>
 </html>
