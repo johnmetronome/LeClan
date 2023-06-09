@@ -192,15 +192,7 @@ button {
         <source src="_Medias/Bernardo Sassetti - Sonho dos Outros.mp3" type="audio/mpeg">
     </audio>
     <script>
-        const animatedText = document.querySelector('.animated-text');
-
-function shuffleLetters() {
-    animatedText.classList.remove('shuffle-animation');
-    void animatedText.offsetWidth; // Trigger reflow to restart the animation
-    animatedText.classList.add('shuffle-animation');
-}
-
-setInterval(shuffleLetters, 10000);
+        
         const dialogueBtn = document.getElementById('dialogue-btn');
         const dialogue = document.getElementById('dialogue');
         const nomInput = document.getElementById('nom');
