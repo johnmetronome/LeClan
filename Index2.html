@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenue sur le site des enfants perdus</title>
+    <title>Les Enfants Perdus</title>
     <style>
         /* Styles pour le diaporama */
         body {
             background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #header {
+            text-align: center;
+            padding: 20px;
         }
 
         #slideshow {
@@ -35,10 +44,10 @@
         }
 
         h1 {
-            color: white;
+            font-size: 36px;
         }
 
-        #dialogue-btn {
+        .dialogue-btn {
             display: block;
             margin: 20px auto;
             background-color: #FF80AB;
@@ -50,7 +59,7 @@
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        #dialogue-btn:hover {
+        .dialogue-btn:hover {
             background-color: #FF4081;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
@@ -107,46 +116,65 @@
         }
 
         .message {
-            color: white;
-            text-align: center;
             margin-top: 20px;
         }
 
         .signature {
-            color: white;
-            text-align: center;
             margin-top: 20px;
+            font-style: italic;
+        }
+
+        .actor {
+            display: inline-block;
+            width: 200px;
+            margin: 10px;
+            vertical-align: top;
+        }
+
+        .actor img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>LE CLAN</h1>
+    <header id="header">
+        <h1>Les Enfants Perdus</h1>
         <div id="slideshow">
-            <img src="_Images\fondecran\0a.png" alt="Image 1">
-            <img src="_Images\fondecran\0b.png" alt="Image 2">
-            <img src="_Images\fondecran\0c.png" alt="Image 3">
-            <img src="_Images\fondecran\0d.png" alt="Image 4">
-            <img src="_Images\fondecran\0e.png" alt="Image 5">
-            <img src="_Images\fondecran\0f.png" alt="Image 6">
-            <img src="_Images\fondecran\0g.png" alt="Image 7">
+            <img src="_Images/fondecran/0a.png" alt="Image 1">
+            <img src="_Images/fondecran/0b.png" alt="Image 2">
+            <img src="_Images/fondecran/0c.png" alt="Image 3">
+            <img src="_Images/fondecran/0d.png" alt="Image 4">
+            <img src="_Images/fondecran/0e.png" alt="Image 5">
+            <img src="_Images/fondecran/0f.png" alt="Image 6">
+            <img src="_Images/fondecran/0g.png" alt="Image 7">
         </div>
-        <button id="dialogue-btn">Rentre ton nom</button>
-        <div class="dialogue" id="dialogue">
-            <form>
-                <label for="nom">Nom:</label>
-                <input type="text" id="nom" name="nom">
-                <button type="submit">Valider</button>
-            </form>
-            <div class="error" id="error"></div>
-        </div>
-        <div class="message" id="message"></div>
-        <div class="signature" id="signature"></div>
+        <button class="dialogue-btn">Rentre ton nom</button>
+    </header>
+
+    <div class="dialogue" id="dialogue">
+        <form id="dialogue-form">
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" name="nom">
+            <button type="submit">Valider</button>
+        </form>
+        <div class="error" id="error"></div>
     </div>
 
-    <audio autoplay>
-        <source src="_Medias\Bernardo Sassetti - Sonho dos Outros.mp3" type="audio/mpeg">
-    </audio>
+    <div class="container">
+        <div class="message" id="message"></div>
+        <div class="signature" id="signature"></div>
+
+        
+        <div class="actor">
+            <img src="_Images/acteur3.jpg" alt="Acteur 3">
+            <h3>Acteur 3</h3>
+            <p>Albrius volmaris solentria, vikarius lexivri akendria. Xentis volbrius brendria, krianthus solvikentris zelentria. Volentis draxentro ententis, vandoris plenkentris lexiboris. Almar vikentri drevalis, solvium entrialis polentria. Yentis norvis vristius, vikentis xalbri ententris.</p>
+        </div>
+    </div>
+
+    
 
     <script>
         const slideshow = document.getElementById('slideshow');
@@ -170,8 +198,9 @@
         fadeInImage();
         setInterval(showNextImage, 5000);
 
-        const dialogueBtn = document.getElementById('dialogue-btn');
+        const dialogueBtn = document.querySelector('.dialogue-btn');
         const dialogue = document.getElementById('dialogue');
+        const dialogueForm = document.getElementById('dialogue-form');
         const nomInput = document.getElementById('nom');
         const error = document.getElementById('error');
         const message = document.getElementById('message');
@@ -182,7 +211,7 @@
             dialogue.classList.add('active');
         });
 
-        dialogue.addEventListener('submit', (e) => {
+        dialogueForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const nom = nomInput.value.trim();
             if (nom === '') {
@@ -196,13 +225,13 @@
         });
 
         function reverseSignature() {
-            const text = "Nous nous retrouverons très bientot. Les Enfants Perdus";
+            const text = "Nous nous retrouverons très bientôt. Les Enfants Perdus";
             const reversedText = text.split('').reverse().join('');
             signature.textContent = reversedText;
         }
 
         function restoreSignature() {
-            signature.textContent = "Nous nous retrouverons très bientot.  Les Enfants Perdus";
+            signature.textContent = "Nous nous retrouverons très bientôt. Les Enfants Perdus";
         }
 
         function toggleSignatureReversal() {
@@ -218,4 +247,3 @@
     </script>
 </body>
 </html>
-```
