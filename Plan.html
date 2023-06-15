@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le plan</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px;
+            background-color: #000000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        #header a {
+            text-decoration: none;
+        }
+
+        #header img {
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        h1 {
+            color: white;
+            font-family: "Childish", cursive;
+        }
+
+        .map-image {
+            display: none;
+            max-width: 100%;
+            opacity: 0;
+            border-radius: 10px;
+            transition: opacity 2s ease, border-radius 2s ease;
+        }
+
+        .map-image.active {
+            display: block;
+            opacity: 1;
+            border-radius: 0;
+        }
+
+        .map-links {
+            position: fixed;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .map-links a {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 12px 20px;
+            background-color: #FFB6C1;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            font-size: 16px;
+        }
+
+        .map-links a:hover {
+            background-color: #F6CED8;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .prev-link {
+            text-align: center;
+            margin-top: 20px;
+            font-family: "Arial Black", sans-serif;
+            font-size: 18px;
+        }
+
+        .prev-link a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .prev-link a:hover {
+            color: #FFB6C1;
+        }
+
+        .prev-link a:active {
+            color: #CC6688;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .map-links {
+                position: static;
+                margin-top: 20px;
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .map-links a {
+                font-size: 14px;
+                margin-right: 10px;
+                margin-bottom: 0;
+            }
+        }
+        
+        @media only screen and (max-width: 400px) {
+            .map-links {
+                display: none;
+            }
+            
+            .map-image {
+                display: block;
+            }
+            
+            .container {
+                margin-top: 20px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Childish&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <a href="accueil.html">
+            <img src="_Images\Logo\Logo1.png" alt="Logo">
+        </a>
+    </header>
+    <div class="container">
+        <h1>Le plan</h1>
+        <img src="_Images\Indices\00dPlanComplet.png" class="map-image" alt="Map 1">
+        <img src="_Images\Indices\00bPlanLettres.png" class="map-image" alt="Map 2">
+        <img src="_Images\Indices\00cPlanNoms.png" class="map-image" alt="Map 3">
+        <img src="_Images\Indices\00dPlanComplet.png" class="map-image" alt="Map 4">
+    </div>
+    <div class="map-links">
+        <a href="#" onclick="showMap(1); return false;">Carte</a>
+        <a href="#" onclick="showMap(2); return false;">Lettres</a>
+        <a href="#" onclick="showMap(3); return false;">Noms</a>
+        <a href="#" onclick="showMap(4); return false;">Complête</a>
+    </div>
+    <div class="prev-link">
+        <a href="accueil.html">Précédent</a>
+    </div>
+
+    <script>
+        window.onload = function() {
+            showMap(1);
+            checkWindowSize();
+            window.addEventListener('resize', checkWindowSize);
+        }
+
+        function showMap(mapIndex) {
+            var mapImages = document.getElementsByClassName("map-image");
+            for (var i = 0; i < mapImages.length; i++) {
+                mapImages[i].classList.remove("active");
+                mapImages[i].style.transition = "opacity 2s ease, border-radius 2s ease";
+            }
+            mapImages[mapIndex - 1].classList.add("active");
+            mapImages[mapIndex - 1].style.transition = "opacity 2s ease, border-radius 2s ease";
+        }
+        
+        function checkWindowSize() {
+            var windowWidth = window.innerWidth;
+            var mapLinks = document.getElementsByClassName("map-links")[0];
+            if (windowWidth <= 400) {
+                mapLinks.style.display = "none";
+            } else {
+                mapLinks.style.display = "flex";
+            }
+        }
+    </script>
+</body>
+</html>
