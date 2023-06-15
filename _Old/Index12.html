@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue sur le site des enfants perdus</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap');
+
+/* Styles for typography */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: black;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Rest of your existing styles */
+
+/* Styles for button */
+button {
+            display: block;
+            margin: 20px auto;
+            background-color: #FF80AB(255, 217, 0);
+            color: #FF80AB;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #FF4081;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Rest of your existing styles */
+        body {
+            background-color: black;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 50%;
+            height: auto;
+        }
+        h1 {
+            color: white;
+            text-align: center;
+        }
+        .dialogue {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #FCE4EC; /* Rose poudré */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Légère ombre portée */
+            color: #555555; /* Couleur de texte */
+            text-align: center;
+        }
+
+        .dialogue.active {
+            display: block;
+        }
+
+        .dialogue label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .dialogue input {
+            display: block;
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .dialogue button {
+            background-color: #FF80AB; /* Tons pastels */
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dialogue button:hover {
+            background-color: #FF4081; /* Tons pastels (couleur au survol) */
+            color: white;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+
+        .message {
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signature {
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #slideshow {
+            position: relative;
+            height: 400px;
+        }
+        #slideshow img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+    opacity: 0;
+    transition: opacity 5s ease-in-out;
+}
+    </style>
+</head>
+
+<body>
+    <h1>LE CLAN</h1>
+    <div id="slideshow">
+        <img src="_Images\fondecran\0a" alt="Image 1">
+        <img src="_Images\fondecran\0b" alt="Image 2">
+        <img src="_Images\fondecran\0c" alt="Image 3">
+        <img src="_Images\fondecran\0d" alt="Image 4">
+        <img src="_Images\fondecran\0e" alt="Image 5">
+        <img src="_Images\fondecran\0f" alt="Image 6">
+        <img src="_Images\fondecran\0g" alt="Image 7">
+    </div>
+    <button id="dialogue-btn">Rentre ton nom</button>
+    <div class="dialogue" id="dialogue">
+        <form>
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" name="nom">
+            <button type="submit">Valider</button>
+        </form>
+        <div class="error" id="error"></div>
+    </div>
+    <div class="message" id="message"></div>
+    <div class="signature">Nous avons hâte de te retrouver.<br><br> Les Enfants Perdus</div>
+    <audio autoplay>
+        <source src="_Medias/Bernardo Sassetti - Sonho dos Outros.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        const dialogueBtn = document.getElementById('dialogue-btn');
+        const dialogue = document.getElementById('dialogue');
+        const nomInput = document.getElementById('nom');
+        const error = document.getElementById('error');
+        const message = document.getElementById('message');
+        const images = document.querySelectorAll('#slideshow img');
+        let currentImageIndex = 0;
+
+        function fadeInImage() {
+            images[currentImageIndex].style.opacity = 1;
+        }
+
+        function fadeOutImage() {
+            images[currentImageIndex].style.opacity = 0;
+        }
+
+        function showNextImage() {
+            fadeOutImage();
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            fadeInImage();
+        }
+
+        fadeInImage();
+        setInterval(showNextImage, 4000);
+
+        dialogueBtn.addEventListener('click', () => {
+            dialogue.classList.add('active');
+        });
+
+        dialogue.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (nomInput.value === 'yaya') {
+                window.location.href = 'cast.html';
+            } else {
+                error.textContent = 'Nom incorrect';
+            }
+        });
+
+        nomInput.addEventListener('input', () => {
+            error.textContent = '';
+        });
+
+        window.addEventListener('load', () => {
+            if (window.innerWidth < 768) {
+                document.querySelector('img').style.maxWidth = '100%';
+            }
+        });
+    </script>
+</body>
+</html>
